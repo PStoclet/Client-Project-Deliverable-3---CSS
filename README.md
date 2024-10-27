@@ -1,4 +1,5 @@
 Athlete Performance Selector
+
 The Athlete Performance Selector is a web application designed to showcase athlete performance data. The application enables users to select an athlete and view detailed information about their performance, including their placement, time, date of the event, and any coach's comments. Additionally, users can view a random photo of the athlete and expand it by clicking.
 
 
