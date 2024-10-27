@@ -15,9 +15,12 @@ athlete_selector_styles.css: This file contains the styles for the application, 
 
 JavaScript
 
-The main JavaScript is embedded in index.html. It includes:
+The main JavaScript is embedded in athlete_performance_selector.html. It includes:
+        
         -Data Fetching: Loads athlete data from a JSON file.
+        
         -UI Interactivity: Updates the dropdown with athlete names, displays athlete performance details, and toggles visibility for comments and photos.
+        
         -Image Handling: Provides random image selection and allows users to expand the selected photo.
 
 
