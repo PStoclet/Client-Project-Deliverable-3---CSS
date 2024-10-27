@@ -26,7 +26,7 @@ The main JavaScript is embedded in athlete_performance_selector.html. It include
 
 Python
 
-data_extractor.py: This Python script processes athlete data from .csv files located in a ZIP archive. The script:
+extract_and_process_athlete_data.py: This Python script processes athlete data from .csv files located in a ZIP archive. The script:
         
         -Extracts CSV files for each athlete from both men's and women's teams.
         
