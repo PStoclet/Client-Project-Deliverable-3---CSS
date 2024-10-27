@@ -27,8 +27,11 @@ The main JavaScript is embedded in athlete_performance_selector.html. It include
 Python
 
 data_extractor.py: This Python script processes athlete data from .csv files located in a ZIP archive. The script:
+        
         -Extracts CSV files for each athlete from both men's and women's teams.
+        
         -Parses each CSV file to identify the athlete’s best time and extracts details for that event.
+        
         -Saves the extracted data to a JSON file, which is used by the front-end to populate the dropdown and display performance data.
 
 
