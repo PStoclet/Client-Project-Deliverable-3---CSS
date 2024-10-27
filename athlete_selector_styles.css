@@ -1,0 +1,163 @@
+/* Mobile-First Design */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px #ddd;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Hover effect for container - make it touch-friendly */
+.container:hover,
+.container:active {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.section {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for sections - touch friendly */
+.section:hover,
+.section:active {
+    background-color: #e0e0e0;
+    transform: translateY(-5px);
+}
+
+.section h2 {
+    margin-top: 0;
+}
+
+/* Larger athlete name */
+.athlete-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Table Design */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+}
+
+/* Hover effect for table rows */
+table tr {
+    transition: background-color 0.3s ease;
+}
+
+table tr:hover {
+    background-color: #d4d4d4;
+}
+
+table thead th {
+    background-color: #009879;
+    color: white;
+    text-align: left;
+    padding: 12px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+}
+
+.meet-details {
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Dropdown Styling */
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+select:hover,
+select:active {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Styling */
+button {
+    background-color: #009879;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Button hover and active for mobile-friendly */
+button:hover,
+button:active {
+    background-color: #007960;
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styling */
+#athleteImage {
+    object-fit: cover;
+    width: 200px; /* Initial size */
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Footnote below image */
+.footnote {
+    text-align: center;
+    font-size: 0.9rem;
+    color: gray;
+    margin-top: 5px;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #2c2c2c;
+        color: #f0f0f0;
+    }
+    .container {
+        background-color: #3c3c3c;
+    }
+    .section {
+        background-color: #4a4a4a;
+    }
+}
