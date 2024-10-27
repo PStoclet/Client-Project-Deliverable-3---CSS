@@ -4,6 +4,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
+    color: #222; /* High contrast text color */
 }
 
 header {
@@ -11,7 +12,7 @@ header {
     margin-bottom: 30px;
     font-size: 2rem;
     font-weight: bold;
-    text-shadow: 2px 2px #ddd;
+    text-shadow: 2px 2px #ccc;
 }
 
 .container {
@@ -25,41 +26,34 @@ header {
     transition: box-shadow 0.3s ease;
 }
 
-/* Hover effect for container - make it touch-friendly */
 .container:hover,
 .container:active {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .section {
-    background-color: #f0f0f0;
+    background-color: #e8e8e8; /* Light background with good contrast */
     padding: 20px;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover effect for sections - touch friendly */
-.section:hover,
-.section:active {
-    background-color: #e0e0e0;
-    transform: translateY(-5px);
-}
-
 .section h2 {
     margin-top: 0;
+    color: #222; /* Darker color for better contrast */
 }
 
-/* Larger athlete name */
 .athlete-name {
     font-size: 1.5rem;
     font-weight: bold;
+    color: #222;
 }
 
 .hidden {
     display: none;
 }
 
-/* Responsive Table Design */
+/* Table Design */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -69,17 +63,8 @@ table {
     border: 1px solid #ddd;
 }
 
-/* Hover effect for table rows */
-table tr {
-    transition: background-color 0.3s ease;
-}
-
-table tr:hover {
-    background-color: #d4d4d4;
-}
-
 table thead th {
-    background-color: #009879;
+    background-color: #007a65;
     color: white;
     text-align: left;
     padding: 12px;
@@ -89,10 +74,8 @@ table th, table td {
     padding: 12px 15px;
 }
 
-.meet-details {
-    text-align: center;
-    color: #333;
-    font-weight: bold;
+table tr:hover {
+    background-color: #d4d4d4;
 }
 
 /* Dropdown Styling */
@@ -111,7 +94,7 @@ select:active {
 
 /* Button Styling */
 button {
-    background-color: #009879;
+    background-color: #007a65; /* Darker green for high contrast */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -122,12 +105,9 @@ button {
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Button hover and active for mobile-friendly */
 button:hover,
 button:active {
-    background-color: #007960;
-    transform: translateY(-3px);
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    background-color: #005f4c;
 }
 
 /* Image Styling */
@@ -140,11 +120,10 @@ button:active {
     transition: transform 0.3s ease;
 }
 
-/* Footnote below image */
 .footnote {
     text-align: center;
     font-size: 0.9rem;
-    color: gray;
+    color: #333;
     margin-top: 5px;
 }
 
