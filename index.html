@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Performance Selector</title>
+    <link rel="stylesheet" href="athlete_selector_styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Athlete Performance</h1>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>Select an Athlete</h2>
+            <label for="athleteSelect">Choose an Athlete</label>
+            <select id="athleteSelect" onchange="displayAthleteData()">
+                <option value="">--Select an Athlete--</option>
+            </select>
+        </div>
+
+        <div id="performanceSection" class="section hidden">
+            <h2 class="athlete-name">Performance Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Overall Place</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="athletePlace"></td>
+                        <td id="athleteTime"></td>
+                        <td id="athleteDate"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Meet:</strong> <span id="athleteMeet"></span></p>
+
+            <div id="commentsContainer" class="hidden">
+                <p><strong>Coach's Comments:</strong> <span id="athleteComments"></span></p>
+            </div>
+
+            <div class="button-group">
+                <button class="see-photo-btn" id="seePhotoBtn" onclick="togglePhoto()">See Photo</button>
+                <button class="toggle-comments-btn" id="toggleCommentsBtn" onclick="toggleComments()">See Comments</button>
+            </div>
+
+            <!-- Athlete's Picture will appear here -->
+            <div id="athletePictureContainer" class="hidden">
+                <img id="athleteImage" onclick="expandImage()" src="" alt="Athlete Picture">
+                <p class="footnote">Click to expand</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let athleteData = [];
+        let photoVisible = false;
+        let commentsVisible = false;
+
+        // List of images in the folder
+        const images = [
+            "2334968.jpg", "18820257.jpg", "18820260.jpg", "18820279.jpg", "18895017.jpg",
+            "19203161.jpg", "19352189.jpg", "21147171.jpg", "21147175.jpg", "21147176.jpg",
+            "21245954.jpg", "21615273.jpg", "21615274.jpg", "22520342.jpg", "23349671.jpg",
+            "23349680.jpg", "23349715.jpg", "23349718.jpg", "23349719.jpg", "23349724.jpg",
+            "23564880.jpg", "23564882.jpg", "23564883.jpg", "23564884.jpg", "23687883.jpg",
+            "24262808.jpg"
+        ];
+
+        // Load the athlete data from the JSON file
+        fetch('athlete_data.json')
+            .then(response => response.json())
+            .then(data => {
+                athleteData = data;
+                populateAthleteSelect();
+            });
+
+        // Populate the dropdown menu with athlete names
+        function populateAthleteSelect() {
+            const athleteSelect = document.getElementById('athleteSelect');
+            athleteData.forEach(athlete => {
+                const option = document.createElement('option');
+                option.value = athlete.athlete_id;
+                option.text = athlete.name;
+                athleteSelect.appendChild(option);
+            });
+        }
+
+        // Display the selected athlete's performance data
+        function displayAthleteData() {
+            const selectedAthleteId = document.getElementById('athleteSelect').value;
+            const athlete = athleteData.find(a => a.athlete_id === selectedAthleteId);
+
+            if (athlete) {
+                document.getElementById('athletePlace').textContent = athlete.overall_place;
+                document.getElementById('athleteTime').textContent = athlete.time;
+                document.getElementById('athleteDate').textContent = athlete.date;
+                document.getElementById('athleteMeet').textContent = athlete.meet;
+                document.getElementById('athleteComments').textContent = athlete.comments;
+
+                // Hide photo and comments initially
+                document.getElementById('athletePictureContainer').classList.add('hidden');
+                document.getElementById('commentsContainer').classList.add('hidden');
+                photoVisible = false;
+                commentsVisible = false;
+                document.getElementById('seePhotoBtn').textContent = 'See Photo';
+                document.getElementById('toggleCommentsBtn').textContent = 'See Comments';
+
+                // Show the performance section
+                document.getElementById('performanceSection').classList.remove('hidden');
+            }
+        }
+
+        // Toggle the visibility of the athlete's photo
+        function togglePhoto() {
+            const pictureContainer = document.getElementById('athletePictureContainer');
+            const imgElement = document.getElementById('athleteImage');
+
+            if (!photoVisible) {
+                const randomImage = images[Math.floor(Math.random() * images.length)];
+                imgElement.src = randomImage;
+                imgElement.alt = 'Athlete Picture';
+                imgElement.style.width = '200px';  // Set initial small size
+                pictureContainer.classList.remove('hidden');
+                document.getElementById('seePhotoBtn').textContent = 'Hide Photo';
+                photoVisible = true;
+            } else {
+                pictureContainer.classList.add('hidden');
+                document.getElementById('seePhotoBtn').textContent = 'See Photo';
+                photoVisible = false;
+            }
+        }
+
+        // Expand the image on click
+        function expandImage() {
+            const imgElement = document.getElementById('athleteImage');
+            if (imgElement.style.width === '200px') {
+                imgElement.style.width = '100%';  // Expand the image to full width
+            } else {
+                imgElement.style.width = '200px';  // Return to original size
+            }
+        }
+
+        // Toggle the visibility of the athlete's comments
+        function toggleComments() {
+            const commentsContainer = document.getElementById('commentsContainer');
+            if (!commentsVisible) {
+                commentsContainer.classList.remove('hidden');
+                document.getElementById('toggleCommentsBtn').textContent = 'Hide Comments';
+                commentsVisible = true;
+            } else {
+                commentsContainer.classList.add('hidden');
+                document.getElementById('toggleCommentsBtn').textContent = 'See Comments';
+                commentsVisible = false;
+            }
+        }
+    </script>
+
+</body>
+</html>
